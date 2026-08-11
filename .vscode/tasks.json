@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "javap current Java file",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/javap-current.sh",
+            "args": [
+                "${file}"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

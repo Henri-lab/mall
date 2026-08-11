@@ -3,6 +3,7 @@ package com.macro.mall.security.config;
 import com.macro.mall.security.component.*;
 import com.macro.mall.security.util.JwtTokenUtil;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,6 +23,7 @@ public class CommonSecurityConfig {
     }
 
     @Bean
+    @ConfigurationProperties(prefix = "secure.ignored")
     public IgnoreUrlsConfig ignoreUrlsConfig() {
         return new IgnoreUrlsConfig();
     }

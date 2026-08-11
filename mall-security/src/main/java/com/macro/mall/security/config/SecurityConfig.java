@@ -5,6 +5,7 @@ import com.macro.mall.security.component.JwtAuthenticationTokenFilter;
 import com.macro.mall.security.component.RestAuthenticationEntryPoint;
 import com.macro.mall.security.component.RestfulAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -35,9 +36,17 @@ public class SecurityConfig {
     private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
     @Autowired(required = false)
     private DynamicAuthorizationManager dynamicAuthorizationManager;
+    @Value("${mall.security.auth-enabled:true}")
+    private Boolean authEnabled;
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+        if (!authEnabled) {
+            httpSecurity.authorizeHttpRequests(registry -> registry.anyRequest().permitAll())
+                    .csrf(AbstractHttpConfigurer::disable)
+                    .sessionManagement(configurer -> configurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+            return httpSecurity.build();
+        }
         httpSecurity.authorizeHttpRequests(registry -> {
             //不需要保护的资源路径允许访问
             for (String url : ignoreUrlsConfig.getUrls()) {

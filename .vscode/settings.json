@@ -1,0 +1,5 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "yaml.schemaStore.enable": false,
+    "java.configuration.updateBuildConfiguration": "interactive"
+}

@@ -1,0 +1,45 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Mall Admin dev",
+            "request": "launch",
+            "mainClass": "com.macro.mall.MallAdminApplication",
+            "projectName": "mall-admin",
+            "cwd": "${workspaceFolder}/mall-admin",
+            "vmArgs": "-Dspring.profiles.active=dev",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "java",
+            "name": "Mall Search dev",
+            "request": "launch",
+            "mainClass": "com.macro.mall.search.MallSearchApplication",
+            "projectName": "mall-search",
+            "cwd": "${workspaceFolder}/mall-search",
+            "vmArgs": "-Dspring.profiles.active=dev",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "java",
+            "name": "Mall Portal dev",
+            "request": "launch",
+            "mainClass": "com.macro.mall.portal.MallPortalApplication",
+            "projectName": "mall-portal",
+            "cwd": "${workspaceFolder}/mall-portal",
+            "vmArgs": "-Dspring.profiles.active=dev",
+            "console": "integratedTerminal"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Mall All dev",
+            "configurations": [
+                "Mall Admin dev",
+                "Mall Search dev",
+                "Mall Portal dev"
+            ]
+        }
+    ]
+}
