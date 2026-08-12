@@ -22,6 +22,10 @@ secure:
   ignored:
     urls: #安全路径白名单
       - /swagger-ui/
+      - /swagger-ui.html
+      - /swagger-ui/**
+      - /v3/api-docs
+      - /v3/api-docs/**
       - /v3/api-docs/*
       - /*/*.html
       - /*/*.js
@@ -73,4 +77,3 @@ rabbitmq:
   queue:
     name:
       cancelOrder: cancelOrderQueue
-
